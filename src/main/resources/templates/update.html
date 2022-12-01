@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Change user</h1>
+            <div class="card-body">
+                <form th:action="@{/admin/{id}(id=${user.id})}" th:object="${user}" th:method="patch">
+                    <div class="form-group">
+                        <label>Name </label>
+                        <input
+                                type="text"
+                                name="name"
+                                class="form-control"
+                                th:field="*{name}"
+                                placeholder="Enter name"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label>LastName</label>
+                        <input
+                                type="text"
+                                name="lastName"
+                                class="form-control"
+                                th:field="*{lastName}"
+                                placeholder="Enter lastName"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input
+                                type="number"
+                                name="age"
+                                class="form-control"
+                                th:field="*{age}"
+                                placeholder="Enter age"
+                        />
+                        <label>Email</label>
+                        <input
+                                type="text"
+                                name="email"
+                                class="form-control"
+                                th:field="*{email}"
+                                placeholder="Enter email"
+                        />
+                        <label>Password</label>
+                        <input
+                                type="text"
+                                name="password"
+                                class="form-control"
+                                th:field="*{password}"
+                                placeholder="Enter password"
+                        />
+                        <label for="role">Roles:</label>
+                        <select multiple="multiple" th:field="*{roles}"
+                                type="text" id="role">
+                            <option th:each="role : ${roles}" th:value="${role.getId()}" th:text="${role.getName()}"></option>
+
+                        </select>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-success">
+                            Update
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

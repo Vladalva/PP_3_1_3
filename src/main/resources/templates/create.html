@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new user</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Create new user</h1>
+            <div class="card-body">
+
+
+                <form th:action="@{/admin/create}" th:object="${user}" method="post">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input
+                                type="text"
+                                name="name"
+                                class="form-control"
+                                value=""
+                                placeholder="Enter  name"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label>LastName</label>
+                        <input
+                                type="text"
+                                name="lastName"
+                                class="form-control"
+                                value=""
+                                placeholder="Enter  lastName"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input
+                                type="number"
+                                name="age"
+                                class="form-control"
+                                value=""
+                                placeholder="Enter age"
+                        />
+                    </div>
+                        <div class="form-group">
+                            <label>email</label>
+                            <input
+                                    type="text"
+                                    name="email"
+                                    class="form-control"
+                                    value=""
+                                    placeholder="Enter email"
+                            />
+                        </div>
+                            <div class="form-group">
+                                <label>password</label>
+                                <input
+                                        type="text"
+                                        name="password"
+                                        class="form-control"
+                                        value=""
+                                        placeholder="Enter password"
+                                />
+                            </div>
+                    <label for="role">Roles:</label>
+                    <select multiple="multiple" th:field="*{roles}"
+                            type="text" id="role">
+                        <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
+
+                    </select>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">
+                            Add user
+                        </button>
+                    </div>
+
+
+                </form>
+
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
